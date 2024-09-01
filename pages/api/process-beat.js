@@ -27,8 +27,9 @@ export default async function handler(req, res) {
 
       res.status(200).json({ beatInfo: { trackName, producerName } });
     } catch (error) {
-      console.error('Error processing beat:', error);
-      res.status(500).json({ error: error.message });
+      console.error('Error processing beat:', error.message);
+      console.error('Error stack:', error.stack);
+      res.status(500).json({ error: 'Internal server error', details: error.message });
     }
   } else {
     console.log('Method not allowed:', req.method);
