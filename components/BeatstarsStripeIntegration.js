@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styles from '../styles/globals.css';
 
 const BeatstarsStripeIntegration = () => {
   const [url, setUrl] = useState('');
@@ -51,29 +50,29 @@ const BeatstarsStripeIntegration = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <button onClick={testBackend} className={styles.button}>Test Backend</button>
-      {testMessage && <p className={styles.testMessage}>{testMessage}</p>}
+    <div className="container">
+      <button onClick={testBackend} className="button">Test Backend</button>
+      {testMessage && <p className="testMessage">{testMessage}</p>}
 
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form onSubmit={handleSubmit} className="form">
         <input
           type="url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Enter Beatstars URL"
           required
-          className={styles.input}
+          className="input"
         />
-        <button type="submit" disabled={isLoading} className={styles.button}>
+        <button type="submit" disabled={isLoading} className="button">
           {isLoading ? 'Processing...' : 'Process Beat'}
         </button>
       </form>
 
-      {error && <p className={styles.error}>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
       {beatInfo && (
-        <div className={styles.info}>
-          <h2 className={styles.title}>Beat Info:</h2>
+        <div className="info">
+          <h2 className="title">Beat Info:</h2>
           <pre>{JSON.stringify(beatInfo, null, 2)}</pre>
         </div>
       )}
