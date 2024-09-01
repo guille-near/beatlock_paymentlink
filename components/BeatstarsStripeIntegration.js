@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../styles/BeatstarsStripeIntegration.module.css';
+import styles from '../styles/globals.css';
 
 const BeatstarsStripeIntegration = () => {
   const [url, setUrl] = useState('');
