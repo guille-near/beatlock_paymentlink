@@ -8,6 +8,7 @@
     "stripe": "^8.191.0"  
   },
   "scripts": {
+    "vercel-build": "npm install && npm run build"
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
