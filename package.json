@@ -3,15 +3,14 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "axios": "^0.21.1",
-    "cheerio": "^1.0.0-rc.10",
-    "stripe": "^8.191.0"
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "stripe": "^13.10.0"
   },
   "scripts": {
     "vercel-build": "npm install && npm run build",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "postinstall": "npm install stripe"
+    "start": "next start"
   }
 }
