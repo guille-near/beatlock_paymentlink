@@ -1,7 +1,28 @@
+import Cors from 'cors';
 import axios from 'axios';
 import cheerio from 'cheerio';
 
+// Inicializar el middleware CORS
+const cors = Cors({
+  methods: ['POST', 'GET', 'HEAD'],
+});
+
+// Función auxiliar para ejecutar middleware
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
+    });
+  });
+}
+
 export default async function handler(req, res) {
+  // Ejecutar middleware CORS
+  await runMiddleware(req, res, cors);
+
   console.log('API handler started');
   
   if (req.method !== 'POST') {
@@ -55,15 +76,12 @@ export default async function handler(req, res) {
     console.error('Detailed error:', error);
     
     if (error.response) {
-      // La solicitud fue hecha y el servidor respondió con un código de estado fuera del rango 2xx
       console.error('Error data:', error.response.data);
       console.error('Error status:', error.response.status);
       console.error('Error headers:', error.response.headers);
     } else if (error.request) {
-      // La solicitud fue hecha pero no se recibió respuesta
       console.error('Error request:', error.request);
     } else {
-      // Algo sucedió en la configuración de la solicitud que provocó un error
       console.error('Error message:', error.message);
     }
     
